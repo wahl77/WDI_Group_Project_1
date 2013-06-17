@@ -6,6 +6,10 @@
     = stylesheet_link_tag    "application", :media => "all"
     = javascript_include_tag "application"
     = csrf_meta_tags
+    
+    %script{type:"text/javascript", src:"http://platform.linkedin.com/in.js"}
+      api_key: bg6dl48a8njs
+      
   %body
     .container
       .row
@@ -21,8 +25,14 @@
               - if !current_user
                 = form_tag sessions_path, class:"navbar-form pull-right" do
                   = text_field_tag :uun, params[:uun], placeholder:"Username", class:"span2"
-                  = password_field_tag :password, params[:password], type:"password", placeholder:"Password", class:"span2"
+                  = password_field_tag :password, paramss[:password], type:"password", placeholder:"Password", class:"span2"
                   = submit_tag :Login, :class => "btn"
+                  
+                  or
+                  
+                  %script{type:"in/Login"}
+                    Hello, <?js= firstName ?> <?js= lastName ?>.
+                  
                   %a{href:signup_path}
                     .btn
                       Signup
