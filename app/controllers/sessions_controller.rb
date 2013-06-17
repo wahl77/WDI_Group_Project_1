@@ -6,17 +6,19 @@ class SessionsController < ApplicationController
   end
   
   def create
-    user = User.find(params[:uun])
+    user = User.find_by_uun(params[:uun])
     if user && user.authenticate(params[:password])
-      flash[:notice] = "You just logged in, welcome #{user.name}"
-      redirect_to users_path
+      session[:user_id] = user.id
+      flash[:notice] = "You just logged in, welcome #{user.uun}"
+      redirect_to root_path
     else
-      redirect_to sessions_path
+      flash.now[:alert] = "Username or password not found"
+      render :new
     end
   end
   
   def destroy
     session[:user_id] = nil
-    edirect_to root_path, :notice => "You are now logged out"
+    redirect_to root_path, :notice => "You are now logged out"
   end
 end

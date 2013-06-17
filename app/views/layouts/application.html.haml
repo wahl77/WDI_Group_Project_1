@@ -1,9 +1,56 @@
 !!!
 %html
   %head
-    %title WDIGroupProject1
+    %title WDI Group Project 1
+    %link{href:"//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css", rel:"stylesheet"}
     = stylesheet_link_tag    "application", :media => "all"
     = javascript_include_tag "application"
     = csrf_meta_tags
   %body
-    = yield
+    .container
+      .row
+        .span12
+          .navbar
+            %nav.navbar-inner
+              %ul.nav
+                %li
+                  %a.active{href:"/"}Foo 
+                %li
+                  %a{href:"/"}Bar
+                  
+                - if !current_user
+                  = form_tag sessions_path, class:"navbar-form.pullright" do
+                    = text_field_tag :uun, params[:uun], placeholder:"Username", class:"span2"
+                    = password_field_tag :password, params[:password], type:"password", placeholder:"Password", class:"span2"
+                    = submit_tag :Login, :class => "btn"
+                  %a{href:signup_path}
+                    .btn
+                      Signup
+                - else
+                  Hello
+                  = current_user.uun
+                  %a{href:logout_path}
+                    Logout
+                  
+                
+                
+                
+              //%form.navbar-form.pull-right
+              //  %input.span2{type:"text", placeholder:"username"}
+              //  %input.span2{type:"password", placeholder:"password"}
+              //  %button.btn{type:"submit"} Submit
+              //  %a{href:signup_path}
+              //    %button.btn Signup
+                
+      .row
+      
+      - unless flash[:notice].blank?
+        .alert
+          = flash[:notice]
+      - unless flash[:alert].blank?
+        .alert.alert-error  
+          = flash[:alert]
+          
+          
+      = yield
+      
