@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
-  attr_accessible :age, :gender, :uun
+  has_secure_password
+  
+  attr_accessible :age, :gender, :uun, :password, :password_confirmation
     
   has_many :locations, inverse_of: :user, dependent: :destroy
   has_and_belongs_to_many :tags

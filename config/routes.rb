@@ -1,6 +1,9 @@
 WDIGroupProject1::Application.routes.draw do
   resources :users
 
+  root :to => "sessions#new"
+  match "login" => "sessions#new"
+  match "logout" => "sessions#destroy"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

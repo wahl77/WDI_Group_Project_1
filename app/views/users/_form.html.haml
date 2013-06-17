@@ -9,11 +9,22 @@
   .field
     = f.label :uun
     = f.text_field :uun
+    
+  .field
+    = f.label :password
+    = f.password_field :password
+
+  .field
+    = f.label :password_confirmation
+    = f.password_field :password_confirmation
+    
   .field
     = f.label :age
     = f.number_field :age
+    
   .field
     = f.label :gender
     = f.text_field :gender
+    
   .actions
     = f.submit 'Save'
