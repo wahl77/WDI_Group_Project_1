@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   
   def current_user
     if session[:atoken]
-      client = LinkedIn::Client.new("bg6dl48a8njs", "BxdMXmqVb5NnkLdc")
+      client = LinkedIn::Client.new(ENV["LINKEDIN_API_KEY"], ENV["LINKEDIN_SECRET_KEY"])
       client.authorize_from_access(session[:atoken], session[:asecret])
       @profile = client.profile
     end
