@@ -22,7 +22,9 @@
               - if current_user
                 .pull-right
                   Hello
-                  = current_user.first_name
+                  = current_user.firstName
+                  = current_user.lastName
+                  = current_user.email
                   \|
                   %a{href:"/logout"}
                     .btn

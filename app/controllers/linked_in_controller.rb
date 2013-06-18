@@ -24,6 +24,19 @@ class LinkedInController < ApplicationController
     else
       client.authorize_from_access(session[:atoken], session[:asecret])
     end
+    
+    email = client.profile(:fields => ["email-address"])[:email_address]
+    @user = User.find_by_email(email)
+    if @user.nil? 
+      @user = User.new
+      @user.email = email
+      @user.firstName = client.profile(:fields => ["first-name"])[:first_name]
+      @user.lastName = client.profile(:fields => ["last-name"])[:last_name]
+      binding.pry
+      @user.save
+    end
+    
+    session[:user_id] = @user.id
     redirect_to root_path   
   end
   
