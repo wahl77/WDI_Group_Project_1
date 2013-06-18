@@ -3,9 +3,11 @@ WDIGroupProject1::Application.routes.draw do
 
   root :to => "static_pages#home"
   
-  match "/login" => "sessions#new", :as => "login" 
-  match "/logout" => "sessions#destroy", :as => "logout"
-  match "/signup" => "users#new", :as => "signup"
+  match "/login" => "linked_in#index", :as => "login" 
+  match "/logout" => "linked_in#destroy", :as => "logout"
+  
+  match "/linked_in/callback" => "linked_in#callback"
+  #match "/signup" => "users#new", :as => "signup"
   
   resources :sessions, :except => [:edit, :update, :index]
   

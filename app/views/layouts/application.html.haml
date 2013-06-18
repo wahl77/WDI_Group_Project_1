@@ -6,6 +6,7 @@
     = stylesheet_link_tag    "application", :media => "all"
     = javascript_include_tag "application"
     = csrf_meta_tags
+      
   %body
     .container
       .row
@@ -17,22 +18,38 @@
                   %a.active{href:"/"}Foo 
                 %li
                   %a{href:"/"}Bar
-                  
-              - if !current_user
-                = form_tag sessions_path, class:"navbar-form pull-right" do
-                  = text_field_tag :uun, params[:uun], placeholder:"Username", class:"span2"
-                  = password_field_tag :password, params[:password], type:"password", placeholder:"Password", class:"span2"
-                  = submit_tag :Login, :class => "btn"
-                  %a{href:signup_path}
+              
+              - if current_user
+                .pull-right
+                  Hello
+                  = current_user.first_name
+                  \|
+                  %a{href:"/logout"}
                     .btn
-                      Signup
+                      Sign out
               - else
-                = current_user.uun
-                %a{href:logout_path}
-                  Logout
-              
-              
-              
+                %a{href:"/login"}
+                  .btn.pull-right
+                    Sign in
+                  
+            //- if !current_user
+            //  = form_tag sessions_path, class:"navbar-form pull-right" do
+            //    = text_field_tag :uun, params[:uun], placeholder:"Username", class:"span2"
+            //    = password_field_tag :password, params[:password], type:"password", placeholder:"Password", class:"span2"
+            //    = submit_tag :Login, :class => "btn"
+            //    
+            //    or
+            //    %a{href:signup_path}
+            //      .btn
+            //        Signup
+            //    
+            //- else
+            //  = current_user.uun
+            //  %a{href:logout_path}
+            //    Logout
+            //
+            //
+            //
             //%form.navbar-form.pull-right
             //  %input.span2{type:"text", placeholder:"username"}
             //  %input.span2{type:"password", placeholder:"password"}
