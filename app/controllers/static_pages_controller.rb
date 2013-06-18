@@ -1,6 +1,7 @@
 class StaticPagesController < ApplicationController
   
-  skip_before_filter :require_authentication
+  skip_before_filter :require_authentication, :only => [:home]
+  
   
   def home
   end

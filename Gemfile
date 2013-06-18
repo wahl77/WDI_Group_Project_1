@@ -32,8 +32,11 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'unicorn'
 
 gem 'geocoder'
-
 gem 'haml-rails'
+gem 'oauth'
+gem 'json'
+gem 'linkedin'
+
 
 group :development, :test do 
 	gem "pry", "~> 0.9.12.2"
