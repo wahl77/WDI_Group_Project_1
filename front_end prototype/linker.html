@@ -18,11 +18,12 @@
 			#content
 			{
 				height:306px;
-				width:100%;
+				width:306px;
+        margin-left: -12px;
 				overflow:hidden;
-				position:relative;
+				position:left;
 
-				border : 1px solid black;
+
 			}
 
 			#imgs
@@ -39,7 +40,7 @@
 				width:4000px;
 
 				/*apply a transfor to kick in the hardware acceleration.  Without this, the first time we add the transform you get odd rendering of the divs (half missing) */
-				-webkit-transform: translate3d(0px,0px,0px); 
+				-webkit-transform: translate3d(0px,0px,0px);
 			}
 
 
@@ -53,12 +54,13 @@
 				height:306px;
 
 				/*apply a transfor to kick in the hardware acceleration.  Without this, the first time we add the transform you get odd rendering of the divs (half missing) */
-				-webkit-transform: translate3d(0px,0px,0px); 
+				-webkit-transform: translate3d(0px,0px,0px);
 			}
 		</style>
 
 
     </head>
+  <!--
     <header>
     <div class="navbar navbar-inverse navbar-fixed-top">
       <div class="navbar-inner">
@@ -70,18 +72,18 @@
           </button>
           <a class="brand" href="./index.html">Bootstrap</a>
           <div class="nav-collapse collapse">
-        
+
           </div>
         </div>
       </div>
     </div>
-	</header>
+	</header>-->
     <body>
 		<div class="container">
 
 			<script id='code_1'>
 
-				var IMG_WIDTH = 310;
+				var IMG_WIDTH=310;
 				var currentImg=0;
 				var maxImages=10;
 				var speed=500;
@@ -129,7 +131,7 @@
 						scrollImages(IMG_WIDTH * currentImg, speed);
 					}
 
-					else if ( phase =="end" )
+					else if ( phase == "end" )
 					{
 						if (direction == "right")
 							previousImage()
@@ -187,6 +189,9 @@
 					<img src="http://distilleryimage1.s3.amazonaws.com/d773e48cd36411e1874222000a1cdb27_6.jpg" />
 				</div>
 			</div>
+
+
+
 
 			<span class='navigation'></span>
 
