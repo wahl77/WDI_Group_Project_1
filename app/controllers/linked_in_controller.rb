@@ -25,19 +25,25 @@ class LinkedInController < ApplicationController
       client.authorize_from_access(session[:atoken], session[:asecret])
     end
     
-    email = client.profile(:fields => ["email-address"])[:email_address]
-    @user = User.find_by_email(email)
+    data = client.profile(:fields => ["first-name", "last-name", "email-address", "headline", "location"])
+    #binding.pry
+    @user = User.find_by_email(data[:email_address])
     if @user.nil? 
       @user = User.new
-      @user.email = email
-      @user.firstName = client.profile(:fields => ["first-name"])[:first_name]
-      @user.lastName = client.profile(:fields => ["last-name"])[:last_name]
+      @user.email = data[:email_address]
+      @user.firstName = data[:first_name]
+      @user.lastName = data[:last_name]
+      binding.pry
+      location = Location.new
+      location.latitude = Geocoder.coordinates(data[:location].name)[0]
+      location.longitude = Geocoder.coordinates(data[:location].name)[1]
+      @user.locations << location
       binding.pry
       @user.save
     end
     
     session[:user_id] = @user.id
-    redirect_to root_path   
+    redirect_to "/profile"   
   end
   
   def destroy

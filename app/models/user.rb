@@ -20,6 +20,10 @@ class User < ActiveRecord::Base
   #  write_attribute :uun, 
   #end
   
+  def user_locations 
+    self.locations.map{|location| location}.join(", ")
+  end
+  
   def find_match
   end
   

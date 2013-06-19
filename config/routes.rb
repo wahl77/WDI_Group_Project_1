@@ -9,6 +9,8 @@ WDIGroupProject1::Application.routes.draw do
   match "/linked_in/callback" => "linked_in#callback"
   #match "/signup" => "users#new", :as => "signup"
   
+  match "/profile" => "users#profile"
+  
   resources :sessions, :except => [:edit, :update, :index]
   
 
