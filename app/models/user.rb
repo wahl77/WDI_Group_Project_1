@@ -1,19 +1,27 @@
 class User < ActiveRecord::Base
-  has_secure_password
   
-  attr_accessible :age, :gender, :uun, :password, :password_confirmation
+  # Does not have any
+  # attr_accessible :age, :gender, :uun, :password, :password_confirmation
     
   has_many :locations, inverse_of: :user, dependent: :destroy
   has_and_belongs_to_many :tags
   
-  validates_length_of :uun, minimum:5, too_short:"must have at least %{count} characters" 
-  validates_uniqueness_of :uun, message:"Sorry, name already taken" 
-  validates_presence_of :uun, message:"You need a username"
+  #validates :uun, 
+  #  length:{minimum:2, message:"must have at least %{count} characters"},
+  #  uniqueness:true, {message:"Sorry, name already taken"},
+  #  presence:true, {message:"You need a username"}
+  #  
+  #validate :age,
+  #  numericality:true, {only:integer:true, greater_than_or_equal_to:0, message:"Invalid age"}
     
-  validates_numericality_of :age, greater_than_or_equal_to:0 
+    
   
-  def uun=(value)
-    write_attribute :uun, value.downcase
+  #def uun=(value)
+  #  write_attribute :uun, 
+  #end
+  
+  def user_locations 
+    self.locations.map{|location| location}.join(", ")
   end
   
   def find_match

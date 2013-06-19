@@ -3,7 +3,6 @@ class Location < ActiveRecord::Base
   
   belongs_to :user, inverse_of: :locations
   
-  validates_numericality_of :latitude
-  validates_numericality_of :longitute
-  
+  validates :latitude, numericality:true
+  validates :longitude, numericality:true
 end

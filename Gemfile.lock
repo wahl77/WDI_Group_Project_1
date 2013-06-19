@@ -57,6 +57,7 @@ GEM
       activesupport (>= 3.1, < 4.1)
       haml (>= 3.1, < 4.1)
       railties (>= 3.1, < 4.1)
+    hashie (2.0.5)
     hike (1.2.3)
     i18n (0.6.1)
     journey (1.0.4)
@@ -65,12 +66,17 @@ GEM
       thor (>= 0.14, < 2.0)
     json (1.8.0)
     kgio (2.8.0)
+    linkedin (0.4.1)
+      hashie (>= 1.2, < 2.1)
+      multi_json (~> 1.0)
+      oauth (~> 0.4)
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     method_source (0.8.1)
     mime-types (1.23)
     multi_json (1.7.7)
+    oauth (0.4.7)
     pg (0.15.1)
     polyglot (0.3.3)
     pry (0.9.12.2)
@@ -140,6 +146,9 @@ DEPENDENCIES
   geocoder
   haml-rails
   jquery-rails
+  json
+  linkedin
+  oauth
   pg
   pry (~> 0.9.12.2)
   pry-debugger
