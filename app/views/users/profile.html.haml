@@ -5,6 +5,5 @@
 %p
   You currently are registered to be staying at 
   %br
-  -current_user.locations.each do |x|
-    - address = "#{x.latitude}, #{x.longitude}"
-    = render 'layouts/map', address: address
+  = #gmaps4rails("map_options" => {"center_on_user" => true, "zoom" => 10},"markers" => { "data" => @markers })
+  = gmaps4rails(@markers)
