@@ -1,0 +1,9 @@
+<%= form_for(@location) do |f| %>
+  <div class="field">
+    <%= f.label :Name %><br />
+    <%= f.text_field :@location %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

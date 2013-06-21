@@ -5,7 +5,29 @@
 %p
   You currently are registered to be staying at 
   %br
-  = gmaps("map_options" => {"auto_zoom" => false, "zoom" => 7 }, "markers" => { "data" => @markers })
-  = #gmaps4rails(@markers)
+  = #gmaps("map_options" => {"auto_zoom" => false, "zoom" => 7 }, "markers" => { "data" => @markers })
   
-  = #gmaps("markers" => {"data" => @markers})
+  #my_locations
+    - @my_locations.each do |my_location|
+      = my_location.name
+      
+  #add_loc
+    = link_to 'New Location', new_location_path, :remote => true
+  
+%h3 
+  Users around you
+- @users.each do |user|
+  - if user != current_user
+    = user.firstName
+    %a{href:"/add_to_friends/#{user.id}"}
+      Add
+      
+      
+%h4
+  People I like
+%ul  
+  - @my_likes.each do |friend|
+    %li
+      = friend.firstName
+      %a{href:"/remove_friends/#{friend.id}"}
+        Remove

@@ -1,19 +1,16 @@
 WDIGroupProject1::Application.routes.draw do
-  resources :users
+  resources :users 
+  resources :locations
 
   root :to => "static_pages#home"
   
   match "/login" => "linked_in#index", :as => "login" 
   match "/logout" => "linked_in#destroy", :as => "logout"
-  
-  match "/linked_in/callback" => "linked_in#callback"
-  #match "/signup" => "users#new", :as => "signup"
-  
+  match "/linked_in/callback" => "linked_in#callback"  
   match "/profile" => "users#profile"
+  match "/add_to_friends/:friend_id" => "likes#add"
+  match "/remove_friends/:friend_id" => "likes#delete"
   
-  resources :sessions, :except => [:edit, :update, :index]
-  
-
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
