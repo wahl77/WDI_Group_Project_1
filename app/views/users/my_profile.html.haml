@@ -1,0 +1,16 @@
+%strong
+  These are all our records on 
+  = current_user.firstName
+
+%p
+  You currently are registered to be staying at 
+  = current_user.user_locations
+  %br
+  = gmaps("map_options" => {"auto_zoom" => false, "zoom" => 7 }, "markers" => { "data" => @markers })
+  
+  #my_locations
+    - @my_locations.each do |my_location|
+      = my_location.name
+      
+  #add_loc
+    = link_to 'New Location', new_location_path, :remote => true

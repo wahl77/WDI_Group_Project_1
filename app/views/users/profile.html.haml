@@ -4,7 +4,39 @@
 
 %p
   You currently are registered to be staying at 
+  = current_user.user_locations
   %br
-  -current_user.locations.each do |x|
-    - address = "#{x.latitude}, #{x.longitude}"
-    = render 'layouts/map', address: address
+  = gmaps("map_options" => {"auto_zoom" => false, "zoom" => 7 }, "markers" => { "data" => @markers })
+  
+  #my_locations
+    - @my_locations.each do |my_location|
+      = my_location.name
+      
+  #add_loc
+    = link_to 'New Location', new_location_path, :remote => true
+
+.row 
+  .span12
+    %img{src:"#{current_user.picture_url}", alt:"Profile Picture", height:"30px"}
+    <img src="http://m3.licdn.com/mpr/mprx/0_fquK8j-YRpzQA6Lq7cSi8YzpMUKQ15kqSzZf8YqaQYkn23PN_-yyaO8hBzrMKC54acmm7JEOsOlQ">
+.row
+  .span6
+    %h4 
+      Users around me
+    %ul
+    - @users.each do |user|
+      - if user != current_user
+        %li
+          = user.firstName
+          %a{href:"/add_to_friends/#{user.id}"}
+            Add
+      
+  .span6
+    %h4
+      People I like
+    %ul  
+      - @my_likes.each do |friend|
+        %li
+          = friend.firstName
+          %a{href:"/remove_friends/#{friend.id}"}
+            Remove

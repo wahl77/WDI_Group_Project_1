@@ -11,7 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130618234405) do
+ActiveRecord::Schema.define(:version => 20130621062427) do
+
+  create_table "likes", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "user_who_is_liked"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
+
+  add_index "likes", ["user_id"], :name => "index_likes_on_user_id"
 
   create_table "locations", :force => true do |t|
     t.float    "latitude"
@@ -19,7 +28,8 @@ ActiveRecord::Schema.define(:version => 20130618234405) do
     t.integer  "user_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-    t.integer  "user_id_id"
+    t.string   "name"
+    t.boolean  "gmaps"
   end
 
   create_table "sessions", :force => true do |t|
@@ -39,11 +49,12 @@ ActiveRecord::Schema.define(:version => 20130618234405) do
   end
 
   create_table "users", :force => true do |t|
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
     t.string   "firstName"
     t.string   "lastName"
     t.string   "email"
+    t.string   "picture_url"
   end
 
   create_table "users_users", :force => true do |t|
