@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130618234405) do
+ActiveRecord::Schema.define(:version => 20130619232452) do
 
   create_table "locations", :force => true do |t|
     t.float    "latitude"
@@ -19,7 +19,8 @@ ActiveRecord::Schema.define(:version => 20130618234405) do
     t.integer  "user_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-    t.integer  "user_id_id"
+    t.string   "name"
+    t.boolean  "gmaps"
   end
 
   create_table "sessions", :force => true do |t|

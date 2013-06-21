@@ -1,8 +1,14 @@
 class Location < ActiveRecord::Base
-  attr_accessible :latitude, :longtitute
+  attr_accessible :latitude, :longtitute, :name
   
   belongs_to :user, inverse_of: :locations
   
-  validates :latitude, numericality:true
-  validates :longitude, numericality:true
+  geocoded_by :name
+  after_validation :geocode, :if => :name_changed?
+  
+  acts_as_gmappable
+  
+  def gmaps4rails_address 
+    name
+  end
 end
