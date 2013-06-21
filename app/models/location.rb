@@ -7,4 +7,8 @@ class Location < ActiveRecord::Base
   after_validation :geocode, :if => :name_changed?
   
   acts_as_gmappable
+  
+  def gmaps4rails_address 
+    name
+  end
 end

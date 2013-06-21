@@ -5,5 +5,7 @@
 %p
   You currently are registered to be staying at 
   %br
-  = #gmaps4rails("map_options" => {"center_on_user" => true, "zoom" => 10},"markers" => { "data" => @markers })
-  = gmaps4rails(@markers)
+  = gmaps("map_options" => {"auto_zoom" => false, "zoom" => 7 }, "markers" => { "data" => @markers })
+  = #gmaps4rails(@markers)
+  
+  = #gmaps("markers" => {"data" => @markers})

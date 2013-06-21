@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(:version => 20130619232452) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.string   "name"
+    t.boolean  "gmaps"
   end
 
   create_table "sessions", :force => true do |t|

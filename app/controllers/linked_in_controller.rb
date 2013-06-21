@@ -29,15 +29,16 @@ class LinkedInController < ApplicationController
     #binding.pry
     @user = User.find_by_email(data[:email_address])
     if @user.nil? 
-      binding.pry
+      #binding.pry
       @user = User.new
       @user.email = data[:email_address]
       @user.firstName = data[:first_name]
       @user.lastName = data[:last_name]
       location = Location.new
-      @user.save
       location.name = data[:location].name
+      @user.save
       @user.locations << location
+      
     end
     
     session[:user_id] = @user.id
