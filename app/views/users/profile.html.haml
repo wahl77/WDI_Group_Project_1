@@ -5,7 +5,7 @@
 %p
   You currently are registered to be staying at 
   %br
-  = #gmaps("map_options" => {"auto_zoom" => false, "zoom" => 7 }, "markers" => { "data" => @markers })
+  = gmaps("map_options" => {"auto_zoom" => false, "zoom" => 7 }, "markers" => { "data" => @markers })
   
   #my_locations
     - @my_locations.each do |my_location|
