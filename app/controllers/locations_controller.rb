@@ -16,6 +16,8 @@ class LocationsController < ApplicationController
   end
   
   def destroy
+    loc = Location.find(params[:location])
+    loc.destroy
   end
   
   def show
