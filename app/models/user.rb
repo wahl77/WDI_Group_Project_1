@@ -26,15 +26,16 @@ class User < ActiveRecord::Base
   end
   
   def user_locations 
-    self.locations.map{|location| location}.join(", ")
+    self.locations.map{|location| location.name}.join(", ")
   end
   
-  def get_users
+  # This is a list of people I who are around me
+  def get_users(range=50)
     my_locations = self.my_locations
     users = []
     people_liked = my_likes
     my_locations.each do |location| 
-      friend_locations = Location.near(location, 50, :order => :distance)
+      friend_locations = Location.near(location, range, :order => :distance)
       friend_locations.each do |friend_location|
         if (! users.include? friend_location.user) && (! people_liked.include? friend_location.user)
           users << friend_location.user
@@ -52,8 +53,8 @@ class User < ActiveRecord::Base
     return my_likes
   end
   
-  def find_match
-    @locations = Location.near(self.locations[0], 50, :order => :distance)
+  def find_match(range=50)
+    @locations = Location.near(self.locations[0], range, :order => :distance)
   end
   
   def is_match

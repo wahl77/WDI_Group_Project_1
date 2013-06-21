@@ -25,7 +25,7 @@ class LinkedInController < ApplicationController
       client.authorize_from_access(session[:atoken], session[:asecret])
     end
     
-    data = client.profile(:fields => ["first-name", "last-name", "email-address", "headline", "location"])
+    data = client.profile(:fields => ["first-name", "last-name", "email-address", "headline", "location", "picture-url"])
     #binding.pry
     @user = User.find_by_email(data[:email_address])
     if @user.nil? 
@@ -34,6 +34,7 @@ class LinkedInController < ApplicationController
       @user.email = data[:email_address]
       @user.firstName = data[:first_name]
       @user.lastName = data[:last_name]
+      @user.picture_url = data[:picture_url]
       location = Location.new
       location.name = data[:location].name
       @user.save

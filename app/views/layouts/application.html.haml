@@ -15,9 +15,9 @@
             %nav.navbar-inner
               %ul.nav
                 %li
-                  %a.active{href:"/"}Foo 
+                  %a.active{href:"/"}Home 
                 %li
-                  %a{href:"/"}Bar
+                  %a{href:"#{my_profile_path}"} My Profile
               
               - if current_user
                 .pull-right
