@@ -11,4 +11,9 @@ class UsersController < ApplicationController
     @my_locations = current_user.my_locations
     @markers = @my_locations.to_gmaps4rails
   end
+  
+  def destroy
+    current_user.destroy
+    redirect_to home_path
+  end
 end

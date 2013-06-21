@@ -6,19 +6,23 @@
   You currently are registered to be staying at 
   = current_user.user_locations
   %br
-  = gmaps("map_options" => {"auto_zoom" => false, "zoom" => 7 }, "markers" => { "data" => @markers })
+  = gmaps("map_options" => {"auto_zoom" => true, "zoom" => 7 }, "markers" => { "data" => @markers })
   
-  #my_locations
+  
+  %ul#my_locations
     - @my_locations.each do |my_location|
-      = my_location.name
+      %li
+        = my_location.name
+        = link_to "Delete", locations_path, :method => :delete
       
   #add_loc
     = link_to 'New Location', new_location_path, :remote => true
 
 .row 
   .span12
-    %img{src:"#{current_user.picture_url}", alt:"Profile Picture", height:"30px"}
-    <img src="http://m3.licdn.com/mpr/mprx/0_fquK8j-YRpzQA6Lq7cSi8YzpMUKQ15kqSzZf8YqaQYkn23PN_-yyaO8hBzrMKC54acmm7JEOsOlQ">
+    - unless current_user.picture_url.blank?
+      %img{src:"#{current_user.picture_url}", alt:"Profile Picture"}
+    
 .row
   .span6
     %h4 
@@ -40,3 +44,7 @@
           = friend.firstName
           %a{href:"/remove_friends/#{friend.id}"}
             Remove
+
+.row
+  .span6
+    = link_to "Delete" , delete_profile_path

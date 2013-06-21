@@ -13,6 +13,7 @@ WDIGroupProject1::Application.routes.draw do
   match "/add_to_friends/:friend_id" => "likes#add"
   match "/remove_friends/:friend_id" => "likes#delete"
   match "/my_profile" => "users#my_profile", as:"my_profile"
+  match "/profile/delete" => "users#destroy", as:"delete_profile"
   
   # The priority is based upon order of creation:
   # first created -> highest priority.
