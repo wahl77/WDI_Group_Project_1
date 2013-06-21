@@ -17,8 +17,9 @@
 
 .row 
   .span12
-    %img{src:"#{current_user.picture_url}", alt:"Profile Picture", height:"30px"}
-    <img src="http://m3.licdn.com/mpr/mprx/0_fquK8j-YRpzQA6Lq7cSi8YzpMUKQ15kqSzZf8YqaQYkn23PN_-yyaO8hBzrMKC54acmm7JEOsOlQ">
+    - unless current_user.picture_url.blank?
+      %img{src:"#{current_user.picture_url}", alt:"Profile Picture"}
+    
 .row
   .span6
     %h4 
@@ -40,3 +41,7 @@
           = friend.firstName
           %a{href:"/remove_friends/#{friend.id}"}
             Remove
+
+.row
+  .span6
+    = link_to "Delete" , delete_profile_path
