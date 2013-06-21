@@ -2,7 +2,9 @@ WDIGroupProject1::Application.routes.draw do
   resources :users 
   resources :locations
 
-  root :to => "static_pages#home"
+  root :to => "users#profile"
+  
+  match "home" => "static_pages#home", :as => "home"
   
   match "/login" => "linked_in#index", :as => "login" 
   match "/logout" => "linked_in#destroy", :as => "logout"

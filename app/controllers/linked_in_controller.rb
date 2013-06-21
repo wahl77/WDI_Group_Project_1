@@ -42,13 +42,13 @@ class LinkedInController < ApplicationController
     end
     
     session[:user_id] = @user.id
-    redirect_to "/profile"   
+    redirect_to root_path   
   end
   
   def destroy
     session[:atoken] = nil
     session[:asecret] = nil
     session[:user_id] = nil
-    redirect_to "/";
+    redirect_to home_path;
   end  
 end
