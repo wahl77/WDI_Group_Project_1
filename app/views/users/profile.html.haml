@@ -24,7 +24,7 @@
     - @my_locations.each do |my_location|
       %li
         = my_location.name
-        = link_to "Delete", locations_path, :method => :delete
+        = link_to "Delete", location_path(my_location), :method => :delete
       
   #add_loc
     = link_to 'New Location', new_location_path, :remote => true

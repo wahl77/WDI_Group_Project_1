@@ -16,8 +16,9 @@ class LocationsController < ApplicationController
   end
   
   def destroy
-    loc = Location.find(params[:location])
+    loc = Location.find(params[:id])
     loc.destroy
+    redirect_to root_path
   end
   
   def show
