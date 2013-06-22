@@ -17,7 +17,7 @@
   = current_user.user_locations
   %br
   .content-padded
-    = gmaps("map_options" => {"auto_zoom" => false, "zoom" => 7 }, "markers" => { "data" => @markers })
+    = gmaps("map_options" => {"auto_zoom" => @my_locations.length>1 , "zoom" => 7 }, "markers" => { "data" => @markers })
   
   
   %ul#my_locations
@@ -29,33 +29,40 @@
   #add_loc
     = link_to 'New Location', new_location_path, :remote => true
 
-.row 
-  .span12
-    - unless current_user.picture_url.blank?
-      %img{src:"#{current_user.picture_url}", alt:"Profile Picture"}
-    
-.row
-  .span6
-    %h4 
-      Users around me
-    %ul
-    - @users.each do |user|
-      - if user != current_user
-        %li
-          = user.firstName
-          %a{href:"/add_to_friends/#{user.id}"}
-            Add
-      
-  .span6
-    %h4
-      People I like
-    %ul  
-      - @my_likes.each do |friend|
-        %li
-          = friend.firstName
-          %a{href:"/remove_friends/#{friend.id}"}
-            Remove
 
-.row
-  .span6
-    = link_to "Delete" , delete_profile_path
+- unless current_user.picture_url.blank?
+  %img{src:"#{current_user.picture_url}", alt:"Profile Picture"}
+
+
+
+%h4 
+  Users around me
+%ul
+- @users.each do |user|
+  - if user != current_user
+    %li
+      = user.firstName
+      %a{href:"/add_to_friends/#{user.id}"}
+        Add
+  
+
+%h4
+  People I like
+%ul  
+  - @my_likes.each do |friend|
+    %li
+      = friend.firstName
+      %a{href:"/remove_friends/#{friend.id}"}
+        Remove
+
+%h4 
+  My matches
+%ul
+  - @my_matches.each do |match|
+    %li
+      = match.firstName
+      %a{href:"mailto:#{match.email}"}
+        = match.email
+%br
+%br
+= link_to "Delete my Profile" , delete_profile_path

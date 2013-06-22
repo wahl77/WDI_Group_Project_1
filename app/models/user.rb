@@ -53,10 +53,38 @@ class User < ActiveRecord::Base
     return my_likes
   end
   
-  def find_match(range=50)
-    @locations = Location.near(self.locations[0], range, :order => :distance)
+  # Gets a list of users who you like and who like you
+  def my_matches
+    matches = []
+    my_likes = my_likes()
+    my_likes.each do |friend|
+      if is_match? friend
+        matches << User.find(friend.id)
+      end
+    end
+    return matches
   end
   
-  def is_match
+  
+  # find if current user object is a reciprocal match with someone else
+  # returns a boolean
+  def is_match?(user2)
+    matches = []
+    my_likes = my_likes();
+    Like.where('user_id = ?', user2.id).each do |friend|
+      
+      return true if friend.user_who_is_liked == self.id 
+    end
+    return false
+      
   end
+  
+  
+  
+  
+  
+  
+  
+  
+  
 end
