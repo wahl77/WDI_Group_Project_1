@@ -1,0 +1,15 @@
+%header.bar-title
+  %a.button-prev{href:"/my_matches"}
+    Back
+  %h1.title
+    Linker - Messages
+  %a.button-next{href:"/message_compose/#{params[:id]}"}
+    Compose
+      
+.content
+  %ul.list
+    - @messages.each do |message|
+      %li
+        Delete
+        = message.content
+        Reply

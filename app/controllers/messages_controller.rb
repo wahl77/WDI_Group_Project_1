@@ -3,9 +3,8 @@ class MessagesController < ApplicationController
     @messages = Message.where("user_id = ?", current_user.id).order("created_at DESC")
   end
   
-  def compose
+  def message_compose
     @message = Message.new
-    @my_friends = current_user.my_matches
   end
   
   def create
@@ -14,9 +13,9 @@ class MessagesController < ApplicationController
     message.user_id = params[:message][:user_id]
     message.sender = current_user.id
     if message.save
-      redirect_to inbox_path
+      redirect_to "/matches"
     else
-      render compose
+      render message_compose
     end
   end
   
@@ -24,5 +23,9 @@ class MessagesController < ApplicationController
     message = Message.find(params[:id])
     message.destroy
     redirect_to inbox_path
+  end
+  
+  def message_from
+    @messages = Message.where("user_id = ? AND sender = ?", current_user.id, params[:id]).order("created_at DESC")
   end
 end

@@ -12,4 +12,12 @@ class LikesController < ApplicationController
     end
     redirect_to root_path
   end
+  
+  def browse_match
+    @users = current_user.get_users
+  end
+  
+  def my_matches
+    @my_matches = current_user.my_matches
+  end
 end

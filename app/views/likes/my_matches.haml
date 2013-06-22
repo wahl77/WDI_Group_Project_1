@@ -1,0 +1,16 @@
+%header.bar-title
+  %a.button{href:"/matches"}
+    %img.tab-icon{src:"/assets/icon-home.png"}
+  %h1.title
+    Linker - Matched
+
+.content
+  %ul.list
+    - @my_matches.each do |match|
+      %a{href:"/message_from/#{match.id}"}
+        %li
+          %img{src:"#{match.picture_url}"}
+          = match.firstName
+
+          
+          

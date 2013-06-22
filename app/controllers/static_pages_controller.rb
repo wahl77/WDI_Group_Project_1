@@ -8,4 +8,10 @@ class StaticPagesController < ApplicationController
     session[:atoker] = nil
   end
   
+  def settings
+  end
+  
+  def menu
+  end
+  
 end

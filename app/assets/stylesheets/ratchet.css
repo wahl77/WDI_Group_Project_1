@@ -1205,11 +1205,33 @@ select {
 .slide-text {
   overflow:visible;
   position: absolute;
-  bottom:15%;
+  color:white;
+  top:75%;
   left: 6%;
   width: 100%;
-  color: #FFFFFF;
+  color: #FFFFFF  ;
   text-align: left;
+}
+
+.slide-summary {
+  overflow:visible;
+  position: absolute;
+  top:85%;
+  left: 6%;
+  width: 90%;
+  color: #FFFFFF  ;
+  text-align: left;
+  z-index: 999;
+  color:green;
+}
+
+.slide-button {
+  overflow:visible;
+  position:absolute;
+  top:78%;
+  right: 6%;
+  color: #FFFFFF  ;
+  text-align: right;
 }
 /* Toggle styles (to be used with toggles.js)
 -------------------------------------------------- */

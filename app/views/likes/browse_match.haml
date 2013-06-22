@@ -1,0 +1,21 @@
+%header.bar-title
+  %a.button{href:"/settings"}
+    %img.tab-icon{src:"/assets/icon-settings.png"}
+  %h1.title
+    Linker - My Matches
+  %a.button{href:"/my_matches"}
+    %img.tab-icon{src:"/assets/icon-profile.png"}
+
+.slider#mySlider
+  %ul
+    - @users.each do |friend|
+      %li
+        %img.slider.img{src:"#{friend.picture_url}", alt:"Profile Picture"}
+        %span.slide-text 
+          = friend.firstName
+        %a{href:"/add_to_friends/#{friend.id}"}
+          %span.count-positive.slide-button
+            ✔
+            
+
+%h3 We thought you might enjoy meeting the above

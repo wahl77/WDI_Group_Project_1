@@ -50,7 +50,8 @@ class User < ActiveRecord::Base
   def my_likes
     my_likes = []
     Like.where('user_id = ?', self.id).each do |friend|
-      my_likes << User.find(friend.user_who_is_liked)
+      user = User.find_by_id(friend.user_who_is_liked)
+      my_likes << user unless user.nil?
     end
     return my_likes
   end

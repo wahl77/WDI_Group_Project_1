@@ -17,6 +17,14 @@ WDIGroupProject1::Application.routes.draw do
   match "/compose" => 'messages#compose', as:"compose"
   post "/messages" => 'messages#create'
   delete "/messages/:id" => 'messages#destroy'
+  match "/settings" => 'static_pages#settings'
+  
+  match "/my_profile_path" => 'users#my_profile'
+  match "/matches" => 'likes#browse_match'
+  match "/my_matches" => 'likes#my_matches'
+  
+  match "/message_from/:id" => 'messages#message_from'
+  match "/message_compose/:id" => 'messages#message_compose'
   
   resources :users
   
