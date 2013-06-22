@@ -25,8 +25,7 @@
   %ul#my_locations
     - @my_locations.each do |my_location|
       %li
-        = my_location.name
-        = link_to "Delete", location_path(my_location), :method => :delete
+        = render :partial => "/locations/location", :locals => {:location => my_location}
       
   #add_loc
     = link_to 'New Location', new_location_path, :remote => true

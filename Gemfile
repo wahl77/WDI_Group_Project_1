@@ -47,6 +47,7 @@ group :development, :test do
 	gem "meta_request"
 	
 	gem 'meta_request'
+	gem 'seed_dump'
 	
 	
 end
