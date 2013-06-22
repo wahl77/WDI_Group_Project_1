@@ -1,42 +1,40 @@
 .slider#mySlider
-  %ul  
+  %ul
     - @users.each do |friend|
       %li
         %img.slider.img{src:"#{friend.picture_url}", alt:"Profile Picture"}
         %span.slide-text
           %a{href:"/add_to_friends/#{friend.id}"}
             Like
-      
-      
+
 %strong
-  Hello my dear 
+  Hello my dear
   = current_user.firstName
 
 %p
-  You currently are registered to be staying at 
+  You currently are registered to be staying at
   = current_user.user_locations
   %br
   .content-padded
     = gmaps("map_options" => {"auto_zoom" => false, "zoom" => 7 }, "markers" => { "data" => @markers })
-  
-  
+
   %ul#my_locations
     - @my_locations.each do |my_location|
       %li
         = my_location.name
         = link_to "Delete", locations_path, :method => :delete
-      
+
   #add_loc
     = link_to 'New Location', new_location_path, :remote => true
 
-.row 
+.row
   .span12
     - unless current_user.picture_url.blank?
       %img{src:"#{current_user.picture_url}", alt:"Profile Picture"}
-    
+
 .row
   .span6
-    %h4 
+    %h4
       Users around me
     %ul
     - @users.each do |user|
@@ -45,11 +43,11 @@
           = user.firstName
           %a{href:"/add_to_friends/#{user.id}"}
             Add
-      
+
   .span6
     %h4
       People I like
-    %ul  
+    %ul
       - @my_likes.each do |friend|
         %li
           = friend.firstName

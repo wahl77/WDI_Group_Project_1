@@ -681,17 +681,6 @@ h6 {
   left: 0;
 }
 
-.slider .slide-text {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  width: 100%;
-  color: #000000;
-  text-align: left;
-  margin-left: 10%;
-  font-size: 24px;
-  font-weight: 300;
-}
 
 /* Give inset components in the iphone correct margin */
 .iphone .list.inset,

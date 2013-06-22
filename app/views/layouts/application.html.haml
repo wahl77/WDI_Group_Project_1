@@ -5,14 +5,14 @@
     = stylesheet_link_tag    "application", :media => "all"
     = javascript_include_tag "application"
     = csrf_meta_tags
-    
+
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
-      
+
   %body{ontouchstart:""}
     %header.bar-title
       //%ul
       //  %li
-      //    %a.active{href:"/"}Home 
+      //    %a.active{href:"/"}Home
       //  %li
       //    %a{href:"#{my_profile_path}"} My Profile
       //
@@ -35,7 +35,7 @@
         = flash[:notice]
       - unless flash[:alert].blank?
         = flash[:alert]
-    
+
       = yield
 
       = content_for :scripts
