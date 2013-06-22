@@ -2,73 +2,40 @@
 %html
   %head
     %title WDI Group Project 1
-    //%link{href:"//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css", rel:"stylesheet"}
     = stylesheet_link_tag    "application", :media => "all"
     = javascript_include_tag "application"
     = csrf_meta_tags
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
       
-  %body
-    .container
-      .row
-        .span12
-          .navbar
-            %nav.navbar-inner
-              %ul.nav
-                %li
-                  %a.active{href:"/"}Home 
-                %li
-                  %a{href:"#{my_profile_path}"} My Profile
-              
-              - if current_user
-                .pull-right
-                  Hello
-                  = current_user.firstName
-                  = current_user.lastName
-                  \|
-                  %a{href:"/logout"}
-                    .btn
-                      Sign out
-              - else
-                %a{href:"/login"}
-                  .btn.pull-right
-                    Sign in
-                  
-            //- if !current_user
-            //  = form_tag sessions_path, class:"navbar-form pull-right" do
-            //    = text_field_tag :uun, params[:uun], placeholder:"Username", class:"span2"
-            //    = password_field_tag :password, params[:password], type:"password", placeholder:"Password", class:"span2"
-            //    = submit_tag :Login, :class => "btn"
-            //    
-            //    or
-            //    %a{href:signup_path}
-            //      .btn
-            //        Signup
-            //    
-            //- else
-            //  = current_user.uun
-            //  %a{href:logout_path}
-            //    Logout
-            //
-            //
-            //
-            //%form.navbar-form.pull-right
-            //  %input.span2{type:"text", placeholder:"username"}
-            //  %input.span2{type:"password", placeholder:"password"}
-            //  %button.btn{type:"submit"} Submit
-            //  %a{href:signup_path}
-            //    %button.btn Signup
-                
-      .row
-      
+  %body{ontouchstart:""}
+    %header.bar-title
+      //%ul
+      //  %li
+      //    %a.active{href:"/"}Home 
+      //  %li
+      //    %a{href:"#{my_profile_path}"} My Profile
+      //
+      //    - if current_user
+      //      = current_user.firstName
+      //      = current_user.lastName
+      //      \|
+      //      %a{href:"/logout"}
+      //        Sign out
+      //    - else
+      //      %a{href:"/login"}
+      //        Sign in
+      //
+      %h1.title
+        Linker
+      %a.button
+        %img.tab-icon
+    .content
       - unless flash[:notice].blank?
-        .alert
-          = flash[:notice]
+        = flash[:notice]
       - unless flash[:alert].blank?
-        .alert.alert-error  
-          = flash[:alert]
-          
-          
+        = flash[:alert]
+    
       = yield
-      
+
       = content_for :scripts
-      

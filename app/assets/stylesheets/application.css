@@ -11,3 +11,9 @@
  *= require_self
  *= require_tree .
  */
+
+.my_css_text{
+	position: fixed;
+	font-size:20px;
+	z-index: 99;
+}

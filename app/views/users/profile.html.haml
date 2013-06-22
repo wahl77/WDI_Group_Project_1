@@ -1,3 +1,13 @@
+.slider#mySlider
+  %ul  
+    - @users.each do |friend|
+      %li
+        %img.slider.img{src:"#{friend.picture_url}", alt:"Profile Picture"}
+        %span.slide-text
+          %a{href:"/add_to_friends/#{friend.id}"}
+            Like
+      
+      
 %strong
   Hello my dear 
   = current_user.firstName
@@ -6,7 +16,8 @@
   You currently are registered to be staying at 
   = current_user.user_locations
   %br
-  = gmaps("map_options" => {"auto_zoom" => true, "zoom" => 7 }, "markers" => { "data" => @markers })
+  .content-padded
+    = gmaps("map_options" => {"auto_zoom" => false, "zoom" => 7 }, "markers" => { "data" => @markers })
   
   
   %ul#my_locations
