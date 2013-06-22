@@ -42,7 +42,8 @@ class User < ActiveRecord::Base
         end
       end
     end
-    return users.shuffle
+    limit = 1000
+    return users.shuffle.take(limit)
   end
   
   def my_likes

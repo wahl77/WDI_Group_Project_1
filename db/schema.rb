@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130621062427) do
+ActiveRecord::Schema.define(:version => 20130622035055) do
 
   create_table "likes", :force => true do |t|
     t.integer  "user_id"
@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(:version => 20130621062427) do
     t.string   "lastName"
     t.string   "email"
     t.string   "picture_url"
+    t.string   "headline"
   end
 
   create_table "users_users", :force => true do |t|
