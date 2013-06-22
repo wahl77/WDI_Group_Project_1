@@ -25,7 +25,6 @@ class LinkedInController < ApplicationController
       client.authorize_from_access(session[:atoken], session[:asecret])
     end
     
-    binding.pry
     
     data = client.profile(:fields => ["first-name", "last-name", "email-address", "headline", "location", "picture-url"])
     #binding.pry

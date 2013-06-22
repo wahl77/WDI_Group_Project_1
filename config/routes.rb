@@ -1,6 +1,5 @@
 WDIGroupProject1::Application.routes.draw do
-  resources :users 
-  resources :locations
+
 
   root :to => "users#profile"
   
@@ -14,6 +13,14 @@ WDIGroupProject1::Application.routes.draw do
   match "/remove_friends/:friend_id" => "likes#delete"
   match "/my_profile" => "users#my_profile", as:"my_profile"
   match "/profile/delete" => "users#destroy", as:"delete_profile"
+  get "/messages" => 'messages#inbox', as:"inbox"
+  match "/compose" => 'messages#compose', as:"compose"
+  post "/messages" => 'messages#create'
+  delete "/messages/:id" => 'messages#destroy'
+  
+  resources :users
+  
+  resources :locations
   
   # The priority is based upon order of creation:
   # first created -> highest priority.

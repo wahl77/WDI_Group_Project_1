@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
     
   has_many :locations, inverse_of: :user, dependent: :destroy
   has_many :likes, inverse_of: :user, dependent: :destroy
+  has_many :messages, inverse_of: :user, dependent: :destroy
   has_and_belongs_to_many :tags
   
   #validates :uun, 

@@ -1,0 +1,18 @@
+= link_to "compose", "compose"
+
+%table{border:1}
+  %tr
+    %th
+      From 
+    %th
+      Message    
+  - @messages.each do |message|
+    %tr
+      %td
+        - user = User.find_by_id(message.sender)
+        = user ? user.firstName : "User Removed"
+  
+      %td 
+        = message.content
+      %td
+        = link_to "Delete", "/messages/#{message.id}", method: :delete
