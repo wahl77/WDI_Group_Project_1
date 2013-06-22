@@ -42,7 +42,7 @@ class User < ActiveRecord::Base
         end
       end
     end
-    return users
+    return users.shuffle
   end
   
   def my_likes
