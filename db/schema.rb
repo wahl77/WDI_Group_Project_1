@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130622051232) do
+ActiveRecord::Schema.define(:version => 20130622161705) do
 
   create_table "likes", :force => true do |t|
     t.integer  "user_id"
@@ -26,10 +26,11 @@ ActiveRecord::Schema.define(:version => 20130622051232) do
     t.float    "latitude"
     t.float    "longitude"
     t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
     t.string   "name"
     t.boolean  "gmaps"
+    t.integer  "range",      :default => 50, :null => false
   end
 
   create_table "messages", :force => true do |t|
