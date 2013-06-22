@@ -38,7 +38,7 @@ class User < ActiveRecord::Base
     my_locations.each do |location| 
       friend_locations = Location.near(location, location.range, :order => :distance)
       friend_locations.each do |friend_location|
-        if (! users.include? friend_location.user) && (! people_liked.include? friend_location.user) && (friend_location.user != self) && friend_location.range <= location.range
+        if (! users.include? friend_location.user) && (! people_liked.include? friend_location.user) && (friend_location.user != self) && (location.range <= friend_location.range )
           users << friend_location.user
         end
       end

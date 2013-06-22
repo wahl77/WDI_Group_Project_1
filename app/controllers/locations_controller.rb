@@ -1,6 +1,7 @@
 class LocationsController < ApplicationController
   def new
     @location = Location.new
+    @range = @location.avail_range.map{|y| ["#{y} miles", y]}
   end
   
   def create

@@ -17,8 +17,7 @@
   </div>
   <div class="field">
     <%= f.label :range %><br />
-    <% x = [1, 2, 5, 10, 30, 50].map{|y| ["#{y} miles", y]}%>
-    <%= f.select :range, options_for_select(x, 30) %>
+    <%= f.select :range, options_for_select(@range, 30) %>
   </div>
   <div class="actions">
     <%= f.submit %>

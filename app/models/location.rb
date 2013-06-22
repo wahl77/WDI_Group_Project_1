@@ -8,6 +8,10 @@ class Location < ActiveRecord::Base
   
   acts_as_gmappable
   
+  def avail_range
+    return [1, 2, 5, 10, 30, 50]
+  end
+  
   def gmaps4rails_address 
     name
   end
