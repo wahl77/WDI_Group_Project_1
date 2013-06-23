@@ -2,14 +2,14 @@
   %a.button-prev{href:"/my_matches"}
     Back
   %h1.title
-    Linker - Messages
-  %a.button-next{href:"/message_compose/#{params[:id]}"}
-    Compose
-      
+    Messages - 
+    = User.find(params[:id]).firstName      
+  
 .content
+  = render :partial => "compose"
+
   %ul.list
     - @messages.each do |message|
       %li
-        Delete
+        %img{src:"#{message.sender.picture_url}", width:"40px", height:"40px"}
         = message.content
-        Reply

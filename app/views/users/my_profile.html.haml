@@ -12,7 +12,7 @@
     %p.content-padded
       = current_user.headline
       %br
-    = gmaps("map_options" => {"auto_zoom" => false, "zoom" => 7 }, "markers" => { "data" => @markers })
+    = gmaps("map_options" => {"auto_zoom" => @my_locations.length>1, "zoom" => 7 }, "markers" => { "data" => @markers })
 
     #my_locations
     %br

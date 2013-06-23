@@ -1,6 +1,6 @@
 class MessagesController < ApplicationController
   def inbox
-    @messages = Message.where("user_id = ?", current_user.id).order("created_at DESC")
+    @messages = Message.where("receiver_id = ?", current_user.id).order("created_at DESC")
   end
   
   def message_compose
@@ -10,10 +10,10 @@ class MessagesController < ApplicationController
   def create
     message = Message.new
     message.content = params[:message][:content]
-    message.user_id = params[:message][:user_id]
-    message.sender = current_user.id
+    message.receiver_id = params[:message][:receiver_id]
+    message.sender_id = current_user.id
     if message.save
-      redirect_to "/matches"
+      redirect_to "/message_from/#{message.receiver_id}"
     else
       render message_compose
     end
@@ -26,6 +26,7 @@ class MessagesController < ApplicationController
   end
   
   def message_from
-    @messages = Message.where("user_id = ? AND sender = ?", current_user.id, params[:id]).order("created_at DESC")
+    @messages = Message.where("(receiver_id = ? AND sender_id = ?) OR (receiver_id = ? AND sender_id = ?)", current_user.id, params[:id], params[:id], current_user.id).order("created_at DESC")
+    @message = Message.new
   end
 end
