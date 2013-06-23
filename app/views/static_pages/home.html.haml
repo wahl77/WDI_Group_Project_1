@@ -1,13 +1,11 @@
-%header.bar-title
-  %h1.title
-    Linker
+- page_title
+
+%br
+  %h2.padded Welcome to Linker!
+  %p The fun way to connect with people right around you!
+
+
+= link_to "Sign Up!", login_path, class:"button-main button-block", style:"width:50%;margin:0 auto;"
+
 %script
   alert("This site uses your current location. Proceed if you want");
-  
-.content
-  %br
-    %h2.padded Welcome to Linker!
-    %p The fun way to connect with people right around you!
-
-
-  = link_to "Sign Up!", login_path, class:"button-main button-block"
