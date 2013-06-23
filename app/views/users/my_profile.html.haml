@@ -28,3 +28,14 @@
 
     %a.button-main.button-block{href:"/matches"}
       Get Started!
+    = @a
+    Markers 
+    %br
+    = @markers
+
+- unless @lat_lng
+  %script
+    getGeoLocation();
+
+  = @geo
+  

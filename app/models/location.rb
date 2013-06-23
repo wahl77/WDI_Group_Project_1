@@ -1,5 +1,5 @@
 class Location < ActiveRecord::Base
-  attr_accessible :latitude, :longtitute, :name, :range
+  attr_accessible :latitude, :longtitute, :name, :range, :is_ip
   
   belongs_to :user, inverse_of: :locations
   
