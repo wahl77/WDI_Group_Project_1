@@ -5,6 +5,13 @@
     Linker - Matched
 
 .content
+
+  - if @my_matches.empty?
+    %br
+    %h1 Sorry, no contacts here for you
+    %h2
+      = link_to "Go get them", "/matches"
+
   %ul.list
     - @my_matches.each do |match|
       %a{href:"/message_from/#{match.id}"}
