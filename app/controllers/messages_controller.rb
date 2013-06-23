@@ -14,7 +14,7 @@ class MessagesController < ApplicationController
     @message.sender_id = current_user.id
     
     # Make sure there is no injection. Don't care about warnings, it's a hacker!
-    return false unless current_user.my_matches.includes? User.find(params[:message][:receiver_id])
+    return false unless current_user.my_matches.include? User.find(params[:message][:receiver_id])
     
     respond_to do |format|
       
