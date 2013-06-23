@@ -16,7 +16,7 @@ WDIGroupProject1::Application.routes.draw do
   get "/messages" => 'messages#inbox', as:"inbox"
   match "/compose" => 'messages#compose', as:"compose"
   post "/messages" => 'messages#create'
-  delete "/messages/:id" => 'messages#destroy'
+  match "/messages/:id" => 'messages#destroy'
   match "/settings" => 'static_pages#settings'
   match "/invite" => 'static_pages#invite'
 

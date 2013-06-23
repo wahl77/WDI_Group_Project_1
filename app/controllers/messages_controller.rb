@@ -8,21 +8,34 @@ class MessagesController < ApplicationController
   end
   
   def create
-    message = Message.new
-    message.content = params[:message][:content]
-    message.receiver_id = params[:message][:receiver_id]
-    message.sender_id = current_user.id
-    if message.save
-      redirect_to "/message_from/#{message.receiver_id}"
-    else
-      render message_compose
+    @message = Message.new
+    @message.content = params[:message][:content]
+    @message.receiver_id = params[:message][:receiver_id]
+    @message.sender_id = current_user.id
+    
+    respond_to do |format|
+      
+      format.js { @message.save }
+      
+      format.html{
+        if @message.save
+          redirect_to "/message_from/#{message.receiver_id}"
+        else
+          render @message_compose
+        end
+      }
     end
   end
   
   def destroy
-    message = Message.find(params[:id])
-    message.destroy
-    redirect_to "/message_from/#{message.receiver_id}"  
+    @message = Message.find(params[:id])
+    @message.destroy
+    respond_to do |format|
+        format.js
+        format.html{
+          redirect_to "/message_from/#{@message.receiver_id}"  
+        }
+    end
   end
   
   def message_from

@@ -9,7 +9,5 @@
     
 %ul.list
   - @messages.each do |message|
-    %li
-      %img{src:"#{message.sender.picture_url}", width:"40px", height:"40px"}
-      = message.content
-      = link_to "Delete", "/messages/#{message.id}", method: :delete, class:"btn-negative"
+    = render :partial => "element", :locals => {message:message}
+   
