@@ -2,12 +2,12 @@ WDIGroupProject1::Application.routes.draw do
 
 
   root :to => "users#profile"
-  
+
   match "home" => "static_pages#home", as:"home"
-  
-  match "/login" => "linked_in#index", as:"login" 
+
+  match "/login" => "linked_in#index", as:"login"
   match "/logout" => "linked_in#destroy", as:"logout"
-  match "/linked_in/callback" => "linked_in#callback"  
+  match "/linked_in/callback" => "linked_in#callback"
   match "/profile" => "users#profile"
   match "/add_to_friends/:friend_id" => "likes#add"
   match "/remove_friends/:friend_id" => "likes#delete"
@@ -18,19 +18,20 @@ WDIGroupProject1::Application.routes.draw do
   post "/messages" => 'messages#create'
   delete "/messages/:id" => 'messages#destroy'
   match "/settings" => 'static_pages#settings'
-  
+  match "/invite" => 'static_pages#invite'
+
   match "/my_profile_path" => 'users#my_profile'
   match "/matches" => 'likes#browse_match'
   match "/my_matches" => 'likes#my_matches'
-  
+
   match "/message_from/:id" => 'messages#message_from'
   match "/message_compose/:id" => 'messages#message_compose'
-  
+
   match "/edit_locations" => 'locations#edit'
   resources :users
-  
+
   resources :locations
-  
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
