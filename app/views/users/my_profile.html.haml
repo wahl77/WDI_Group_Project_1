@@ -8,8 +8,8 @@
   %p.content-padded
     = current_user.headline
     %br
-  = gmaps("map_options" => {"auto_zoom" => @my_locations.length>1, "zoom" => 7 }, "markers" => { "data" => @markers })
-
+  = render :partial => "/layouts/map", :locals => {locations:@my_locations, markers:@markers}
+  
   #my_locations
   %br
     %p.content-padded

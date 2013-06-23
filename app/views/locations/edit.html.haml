@@ -11,4 +11,5 @@
         = location.name
         = link_to "Delete", location_path(location), :method => :delete, class:"button-negative"
   
-  = gmaps("map_options" => {"auto_zoom" => @locations.length >1, "zoom" => 7 }, "markers" => { "data" => @markers })
+  = render :partial => "/layouts/map", :locals => {locations:@locations, markers:@markers}
+  

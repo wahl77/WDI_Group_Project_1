@@ -22,7 +22,7 @@ class MessagesController < ApplicationController
   def destroy
     message = Message.find(params[:id])
     message.destroy
-    redirect_to inbox_path
+    redirect_to "/message_from/#{message.receiver_id}"  
   end
   
   def message_from
