@@ -1,13 +1,12 @@
 - page_title("Messages -#{User.find(params[:id]).firstName}")
-  
+
 
 = render :partial => "compose"
 
 - if @messages.empty?
-  %h2 
+  %h2
     You have shared interest, start the discussion
-    
+
 %ul.list
   - @messages.each do |message|
     = render :partial => "element", :locals => {message:message}
-   

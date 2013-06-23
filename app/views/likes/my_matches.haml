@@ -11,4 +11,8 @@
     %a{href:"/message_from/#{match.id}"}
       %li
         %img{src:"#{match.picture_url}"}
-        = match.firstName
+          %p
+          = match.firstName
+          = match.headline
+        %a.button-negative
+          X

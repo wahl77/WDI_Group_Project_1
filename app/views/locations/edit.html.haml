@@ -1,15 +1,16 @@
 - page_title "Locations"
-    
+
 .content
   = render :partial => "form"
 
   %ul.list
     - @locations.each do |location|
       %li
-        = location.range 
-        miles away from 
-        = location.name
-        = link_to "Delete", location_path(location), :method => :delete, class:"button-negative"
-  
+        %p
+          = location.range
+          miles from
+        = link_to "X", location_path(location), :method => :delete, class:"button-negative"
+        %p
+          = location.name
+
   = render :partial => "/layouts/map", :locals => {locations:@locations, markers:@markers}
-  

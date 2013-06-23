@@ -11,10 +11,10 @@
         %a{href:"/add_to_friends/#{friend.id}"}
           %span.count-positive.slide-button
             ✔
+        %span.slide-summary
+          = friend.headline
 
 
 
-%p.content-padded
-  - @users.each do |friend|
-    = friend.headline
+
 

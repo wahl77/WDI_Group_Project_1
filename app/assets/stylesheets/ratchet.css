@@ -116,9 +116,7 @@ a {
   text-decoration: none;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0); /* Removes the dark touch outlines on links */
 }
-p {
-  padding:10px;
-}
+
 
 /* Wrapper to be used around all content not in .bar-title and .bar-tab */
 .content {
@@ -423,6 +421,7 @@ p {
 /* Override standard padding changes for .button-blocks */
 [class*="bar"] .button-block:active {
   padding: 7px 0;
+  width:200px;
 }
 
 /* Segmented controller in any bar
@@ -812,9 +811,11 @@ select {
 /* Block level buttons (full width buttons) */
 .button-block {
   display: block;
-  padding: 11px 0 13px;
+  width:70%;
+  padding: 11px 10px 13px;
   margin-bottom: 10px;
   font-size: 16px;
+  margin: 0 auto;
 }
 
 /* Active state for block level buttons */
@@ -944,7 +945,7 @@ select {
 .segmented-controller li {
   overflow: hidden;
   text-align: center;
-  white-space: nowrap;
+  /*white-space: nowrap;*/
   border-left: 1px solid #aaa;
   box-shadow: inset 1px 0 rgba(255, 255, 255, .5);
   -webkit-box-flex: 1;
@@ -1164,7 +1165,7 @@ select {
 .slider,
 .slider > li {
   width: 100%;
-  height: 275px;
+  height: 300px;
 }
 
 /* Outer wrapper for slider */
@@ -1177,7 +1178,7 @@ select {
 .slider > ul {
   position: relative;
   font-size: 0; /* Remove spaces from inline-block children */
-  white-space: nowrap;
+  /*white-space: nowrap;*/
   -webkit-transition: all 0 linear;
           transition: all 0 linear;
 }
@@ -1191,7 +1192,7 @@ select {
 }
 
 /* Required reset of font-size to same as standard body */
-.slider > ul > li > * {
+.slider > ul > li {
   font-size: 24px;
   font-weight: 100;
 }
@@ -1201,15 +1202,15 @@ select {
 }
 .slider .img {
   height: 310px;
-  width: 325px;
+  width: 100%;
 }
 
 .slide-text {
   overflow:visible;
   position: absolute;
   color:white;
-  top:75%;
-  left: 6%;
+  top:74%;
+  left: 4%;
   width: 100%;
   color: #FFFFFF  ;
   text-align: left;
@@ -1218,19 +1219,21 @@ select {
 .slide-summary {
   overflow:visible;
   position: absolute;
-  top:85%;
-  left: 6%;
-  width: 90%;
+  top:82%;
+  left:4%;
+  width:90%;
   color: #FFFFFF  ;
   text-align: left;
   z-index: 999;
-  color:green;
-}
+  color:#0066aa;
+  font-size:14px;
+  font-weight:300;
+  }
 
 .slide-button {
   overflow:visible;
   position:absolute;
-  top:78%;
+  top:74%;
   right: 6%;
   color: #FFFFFF  ;
   text-align: right;

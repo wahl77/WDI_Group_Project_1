@@ -15,7 +15,7 @@
   var topCache;
   var eventListeners;
 
-  prettyPrint();
+  //prettyPrint();
 
   var initialize = function  () {
     currentActive        = 0;
