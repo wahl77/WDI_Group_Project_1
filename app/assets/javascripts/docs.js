@@ -1,4 +1,4 @@
-/*$(function() {
+$(function() {
 
   var doc;
   var iphone;
@@ -15,7 +15,7 @@
   var topCache;
   var eventListeners;
 
-  //prettyPrint();
+  prettyPrint();
 
   var initialize = function  () {
     currentActive        = 0;
@@ -125,4 +125,4 @@
 
   $(window).on('load resize', initialize);
   $(window).on('load', function () { new FingerBlast('.iphone-content'); });
-});*/
+});
