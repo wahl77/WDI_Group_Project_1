@@ -1,7 +1,7 @@
 WDIGroupProject1::Application.routes.draw do
 
 
-  root :to => "users#profile"
+  root :to => "likes#my_matches"
 
   match "home" => "static_pages#home", as:"home"
 
