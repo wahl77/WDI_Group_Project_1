@@ -19,6 +19,7 @@ WDIGroupProject1::Application.routes.draw do
   match "/messages/:id" => 'messages#destroy'
   match "/settings" => 'static_pages#settings'
   match "/invite" => 'static_pages#invite'
+  get "/match/delete/:id" => 'likes#destroy'
 
   match "/my_profile_path" => 'users#my_profile'
   match "/matches" => 'likes#browse_match'

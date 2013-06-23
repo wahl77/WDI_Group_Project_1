@@ -36,7 +36,7 @@ class MessagesController < ApplicationController
     respond_to do |format|
         format.js
         format.html{
-          redirect_to "/message_from/#{@message.receiver_id}"  
+          #redirect_to "/message_from/#{@message.receiver_id}"  
         }
     end
   end

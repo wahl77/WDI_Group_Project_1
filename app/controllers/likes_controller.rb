@@ -5,8 +5,8 @@ class LikesController < ApplicationController
     redirect_to root_path
   end
   
-  def delete
-    my_like = Like.where("user_id = ? AND user_who_is_liked = ?", current_user.id, params[:friend_id])
+  def destroy
+    my_like = Like.where("user_id = ? AND user_who_is_liked = ?", current_user.id, params[:id])
     my_like.each do |x|
       x.destroy
     end
@@ -15,6 +15,7 @@ class LikesController < ApplicationController
   
   def browse_match
     @users = current_user.get_users
+    @page = "match"
   end
   
   def my_matches

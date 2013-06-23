@@ -10,27 +10,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
 
   %body{ontouchstart:""}
-    .content
-        
-      %header.bar-title
-        %a.button{href:"/matches"}
-          %img.tab-icon{src:"/assets/icon-home.png"}
-        %a.button{href:"/my_matches"}
-          %img.tab-icon{src:"/assets/icon-messages.png"}
-       
-        %h1.title
-          = yield :page_title
-
-
-        %a.button{href:"/settings"}
-          %img.tab-icon{src:"/assets/icon-settings.png"}
-          
+      
+    %header.bar-title
+      %a.button{href:"/matches"}
+        %img.tab-icon{src:"/assets/icon-home.png"}
+      %a.button{href:"/my_matches"}
+        %img.tab-icon{src:"/assets/icon-messages.png"}
+     
+      %h1.title
+        = yield :page_title
+    
+    
+      %a.button{href:"/settings"}
+        %img.tab-icon{src:"/assets/icon-settings.png"}
+    
+    
+    - if @page != "match"    
       .content
         - unless flash[:notice].blank?
           = flash[:notice]
         - unless flash[:alert].blank?
           = flash[:alert]
-          
+        
         = yield 
+    
+      = content_for :scripts
+    - else 
+      - unless flash[:notice].blank?
+        = flash[:notice]
+      - unless flash[:alert].blank?
+        = flash[:alert]
+        
+      = yield 
       
-        = content_for :scripts
+      = content_for :scripts
