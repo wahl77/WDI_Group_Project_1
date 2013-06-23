@@ -1,23 +1,17 @@
-%header.bar-title
-  %a.button{href:"/matches"}
-    %img.tab-icon{src:"/assets/icon-home.png"}
-  %h1.title
-    Linker - Matched
+- page_title "My Friends"
 
-.content
+- if @my_matches.empty?
+  %br
+  %h1 Sorry, no contacts here for you
+  %h2
+    = link_to "Go get them", "/matches"
 
-  - if @my_matches.empty?
-    %br
-    %h1 Sorry, no contacts here for you
-    %h2
-      = link_to "Go get them", "/matches"
+%ul.list
+  - @my_matches.each do |match|
+    %a{href:"/message_from/#{match.id}"}
+      %li
+        %img{src:"#{match.picture_url}"}
+        = match.firstName
 
-  %ul.list
-    - @my_matches.each do |match|
-      %a{href:"/message_from/#{match.id}"}
-        %li
-          %img{src:"#{match.picture_url}"}
-          = match.firstName
-
-          
-          
+        
+        

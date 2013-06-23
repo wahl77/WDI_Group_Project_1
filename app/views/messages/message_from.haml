@@ -1,20 +1,15 @@
-%header.bar-title
-  %a.button-prev{href:"/my_matches"}
-    Back
-  %h1.title
-    Messages - 
-    = User.find(params[:id]).firstName      
+- page_title("Messages -#{User.find(params[:id]).firstName}")
   
-.content
-  = render :partial => "compose"
 
-  - if @messages.empty?
-    %h2 
-      You have shared interest, start the discussion
-      
-  %ul.list
-    - @messages.each do |message|
-      %li
-        %img{src:"#{message.sender.picture_url}", width:"40px", height:"40px"}
-        = message.content
-        = link_to "Delete", "/messages/#{message.id}", method: :delete, class:"btn-negative"
+= render :partial => "compose"
+
+- if @messages.empty?
+  %h2 
+    You have shared interest, start the discussion
+    
+%ul.list
+  - @messages.each do |message|
+    %li
+      %img{src:"#{message.sender.picture_url}", width:"40px", height:"40px"}
+      = message.content
+      = link_to "Delete", "/messages/#{message.id}", method: :delete, class:"btn-negative"

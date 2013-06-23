@@ -14,15 +14,26 @@
     .content
         
       %header.bar-title
+        %a.button{href:"/matches"}
+          %img.tab-icon{src:"/assets/icon-home.png"}
+        %a.button{href:"/my_matches"}
+          %img.tab-icon{src:"/assets/icon-messages.png"}
+        %a.button-prev{href:"/settings"}
+          Back
+       
         %h1.title
           = yield :page_title
-      
+
+
+        %a.button{href:"/settings"}
+          %img.tab-icon{src:"/assets/icon-settings.png"}
+          
       .content
         - unless flash[:notice].blank?
           = flash[:notice]
         - unless flash[:alert].blank?
           = flash[:alert]
           
-        = yield 
-        
-        = content_for :scripts
+  = yield 
+      
+  = content_for :scripts
