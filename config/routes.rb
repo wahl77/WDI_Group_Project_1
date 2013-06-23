@@ -26,6 +26,7 @@ WDIGroupProject1::Application.routes.draw do
   match "/message_from/:id" => 'messages#message_from'
   match "/message_compose/:id" => 'messages#message_compose'
   
+  match "/edit_locations" => 'locations#edit'
   resources :users
   
   resources :locations

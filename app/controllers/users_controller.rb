@@ -5,10 +5,6 @@ class UsersController < ApplicationController
     @my_likes = current_user.my_likes
     @my_matches = current_user.my_matches
     @users = current_user.get_users
-    
-    loc = Location.new(:name => request.location.data["city"])
-    @markers << loc.to_gmaps4rails
-    
   end
   
   def my_profile

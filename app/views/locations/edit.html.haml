@@ -1,0 +1,18 @@
+%header.bar-title
+  %a.button-prev{href:"/settings"}
+    Back
+  %h1.title
+    Locations
+    
+.content
+  = render :partial => "form"
+
+  %ul.list
+    - @locations.each do |location|
+      %li
+        = location.range 
+        miles away from 
+        = location.name
+        = link_to "Delete", location_path(location), :method => :delete, class:"button-negative"
+  
+  = gmaps("map_options" => {"auto_zoom" => @locations.length >1, "zoom" => 7 }, "markers" => { "data" => @markers })
