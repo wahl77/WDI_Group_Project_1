@@ -19,13 +19,13 @@
   %br
   .content-padded
     = gmaps("map_options" => {"auto_zoom" => @my_locations.length>1 , "zoom" => 7 }, "markers" => { "data" => @markers })
-  
-  
+
+
   %ul#my_locations
     - @my_locations.each do |my_location|
       %li
         = render :partial => "/locations/location", :locals => {:location => my_location}
-      
+
   #add_loc
     = link_to 'New Location', new_location_path, :remote => true
 
@@ -35,7 +35,7 @@
 
 
 
-%h4 
+%h4
   Users around me
 %ul
 - @users.each do |user|
@@ -44,18 +44,18 @@
       = user.firstName
       %a{href:"/add_to_friends/#{user.id}"}
         Add
-  
+
 
 %h4
   People I like
-%ul  
+%ul
   - @my_likes.each do |friend|
     %li
       = friend.firstName
       %a{href:"/remove_friends/#{friend.id}"}
         Remove
 
-%h4 
+%h4
   My matches
 %ul
   - @my_matches.each do |match|

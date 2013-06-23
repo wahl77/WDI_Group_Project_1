@@ -3,6 +3,8 @@
     %img.tab-icon{src:"/assets/icon-home.png"}
   %h1.title
     Linker
+  %a.button{href:"/settings"}
+    %img.tab-icon{src:"/assets/icon-settings.png"}
 .content
   - unless current_user.picture_url.blank?
     %img.slider.img{src:"#{current_user.picture_url}", alt:"Profile Picture"}

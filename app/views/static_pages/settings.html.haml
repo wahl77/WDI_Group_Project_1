@@ -1,22 +1,31 @@
 %header.bar-title
+  %a.button{href:"/matches"}
+    %img.tab-icon{src:"/assets/icon-home.png"}
   %h1.title
     Linker
-
+  %a.button{href:"/matches"}
+    %img.tab-icon{src:"/assets/icon-profile.png"}
 .content
   %ul.list
     %li
       My Profile
-      %a.button-positive
+      %a.button-positive{href:"/my_profile"}
         🍔
     %li
       Update profile
-      %a.button-positive
+      %a.button-positive{href:"/"}
         🔑
     %li
       Matching Preferences
-      %a.button-positive
+      %a.button-positive{href:"/"}
         🎯
     %li
       About Linker
-      %a.button-positive
+      %a.button-positive{href:"/about"}
         📘
+  %br
+  %a.button-main.button-block{href:"/invite"}
+    lnkr is more fun with friends!
+  %br
+  %a.button-negative.button-block{href:"/logout"}
+    Sad to see you leave :(

@@ -105,7 +105,7 @@ body {
   right: 0;
   bottom: 0;
   left: 0;
-  font: 14px/1.25 "Helvetica Neue", sans-serif;
+  font: 16px/1.25 "Helvetica Neue", sans-serif;
   color: #222;
   background-color: #fff;
 }
@@ -415,7 +415,7 @@ p {
 
 /* Add proper padding and replace buttons normal dropshadow with a shine from bar */
 [class*="bar"] .button-block {
-  padding: 7px 0;
+  padding: 7px;
   margin-bottom: 0;
   box-shadow: inset 0 1px 1px rgba(255, 255, 255, .4), 0 1px rgba(255, 255, 255, .8);
 }
