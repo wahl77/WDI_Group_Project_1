@@ -1,9 +1,6 @@
 = form_for @message do |f|
-  = f.label :To
-  %select{name:"message[user_id]"}
-    %option{value:"#{params[:id]}"}
-      = User.find(params[:id]).firstName
+  = f.text_field :receiver_id, value:"#{params[:id]}", type:"hidden", name:"message[receiver_id]"
   %br
-  = f.text_area :content, rows:"5"
+  = f.text_area :content, rows:"3"
   %br
   = f.submit :"Send Message!", class:"button-positive button-block", style:"width:100%"

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130622161705) do
+ActiveRecord::Schema.define(:version => 20130623000919) do
 
   create_table "likes", :force => true do |t|
     t.integer  "user_id"
@@ -34,14 +34,22 @@ ActiveRecord::Schema.define(:version => 20130622161705) do
   end
 
   create_table "messages", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "sender"
     t.text     "content"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.integer  "sender_id"
+    t.integer  "receiver_id"
+  end
+
+  create_table "receivers", :force => true do |t|
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
-  add_index "messages", ["user_id"], :name => "index_messages_on_user_id"
+  create_table "senders", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "sessions", :force => true do |t|
     t.datetime "created_at", :null => false
