@@ -7,8 +7,11 @@ class UsersController < ApplicationController
     @users = current_user.get_users
     
     loc = Location.new(:name => request.location.data["city"])
+    current_user.locations << loc
     @markers << loc.to_gmaps4rails
+    binding.pry
     
+    loc.destroy
   end
   
   def my_profile

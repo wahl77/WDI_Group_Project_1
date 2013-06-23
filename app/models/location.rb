@@ -15,4 +15,8 @@ class Location < ActiveRecord::Base
   def gmaps4rails_address 
     name
   end
+  
+  def my_ip
+    request.ip
+  end
 end
