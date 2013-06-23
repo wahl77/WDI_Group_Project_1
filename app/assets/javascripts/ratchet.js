@@ -753,7 +753,7 @@
     e = new CustomEvent('toggle', {
       detail: { isActive: slideOn },
       bubbles: true,
-      cancelable: true
+      cancelable: tru
     });
 
     toggle.dispatchEvent(e);

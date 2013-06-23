@@ -2,28 +2,29 @@
   %a.button{href:"/matches"}
     %img.tab-icon{src:"/assets/icon-home.png"}
   %h1.title
-    Linker - My Profile
+    Linker
 .content
   - unless current_user.picture_url.blank?
     %img.slider.img{src:"#{current_user.picture_url}", alt:"Profile Picture"}
-  %strong
-    These are all our records on 
-    = current_user.firstName
-    %br
-    = current_user.headline
-  
-  %p
-    You currently are registered to be staying at 
-    = current_user.user_locations
-    %br
+    %h2.content-padded
+      = current_user.firstName
+      = current_user.lastName
+    %p.content-padded
+      = current_user.headline
+      %br
     = gmaps("map_options" => {"auto_zoom" => false, "zoom" => 7 }, "markers" => { "data" => @markers })
-    
+
     #my_locations
-      You are searching people in the following area
-      %ul
+    %br
+      %p.content-padded
+        Now you can meet people in these areas:
+      %ul.content-padded
         - @my_locations.each do |my_location|
           %li
-            = my_location.range 
-            miles from 
+            = my_location.range
+            miles from
             = my_location.name
-        
+          %br
+
+            %a.button-main.button-block{href:"/matches"}
+              Get Started!
