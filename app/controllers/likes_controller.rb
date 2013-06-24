@@ -2,7 +2,7 @@ class LikesController < ApplicationController
   
   def add
     current_user.likes << Like.new(:user_who_is_liked => params[:friend_id])
-    redirect_to root_path
+    redirect_to "/matches"
   end
   
   def destroy

@@ -1,29 +1,35 @@
-- page_title "Settings"
-
-%ul.list
-  %li
-    My Profile
-    %a.button-positive{href:"/my_profile"}
-      🍔
-  %li
-    Add Location
-    %a.button-positive
-    = link_to "🚀", edit_locations_path, class:"button-positive"
-
-
-  %li
-    Matching Preferences
-    %a.button-positive{href:"/"}
-      🎯
-  %li
-    About Linker
-    %a.button-positive{href:"/about"}
-      📘
-%br
-%a.button-main.button-block{href:"/invite"}
-  linkr is more fun with friends!
-%br
-%a.button-negative.button-block{href:"/logout"}
-  Sad to see you leave :(
-%br
-%br
+%header.bar-title
+  %a.button{href:"/matches"}
+    %img.tab-icon{src:"/assets/icon-home.png"}
+  %h1.title
+    Linker
+    
+.content
+  %ul.list
+    %li
+      My Profile
+      %a.button-positive{href:"/my_profile"}
+        
+    %li
+      Add Location
+      %a.button-positive
+      = link_to "", edit_locations_path, class:"button-positive"
+  
+  
+    %li
+      Matching Preferences
+      %a.button-positive{href:"/"}
+        
+    %li
+      About Linker
+      %a.button-positive{href:"/about"}
+        
+  %br
+  %a.button-main.button-block{href:"/invite"}
+    linkr is more fun with friends!
+  %br
+  %a.button-negative.button-block{href:"/logout"}
+    Sad to see you leave :(
+  %br
+  %br
+  

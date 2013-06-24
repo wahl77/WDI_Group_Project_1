@@ -1,26 +1,33 @@
-- page_title "My Profile"
-
-- unless current_user.picture_url.blank?
-  %img.slider.img{src:"#{current_user.picture_url}", alt:"Profile Picture"}
-  %h2.content-padded
-    = current_user.firstName
-    = current_user.lastName
-  %p.content-padded
-    = current_user.headline
-    %br
-  = render :partial => "/layouts/map", :locals => {locations:@my_locations, markers:@markers}
-  
-  #my_locations
-  %br
+%header.bar-title
+  %a.button{href:"/matches"}
+    %img.tab-icon{src:"/assets/icon-home.png"}
+  %h1.title
+    Linker
+  %a.button{href:"/settings"}
+    %img.tab-icon{src:"/assets/icon-settings.png"}
+    
+.content    
+  - unless current_user.picture_url.blank?
+    %img.slider.img{src:"#{current_user.picture_url}", alt:"Profile Picture"}
+    %h2.content-padded
+      = current_user.firstName
+      = current_user.lastName
     %p.content-padded
-      Now you can meet people in these areas:
-    %ul.content-padded
-      - @my_locations.each do |my_location|
-        %li
-          = my_location.range
-          miles from
-          = my_location.name
-        %br
-
-  %a.button-main.button-block{href:"/matches"}
-    Get Started!    
+      = current_user.headline
+      %br
+    = render :partial => "/layouts/map", :locals => {locations:@my_locations, markers:@markers}
+    
+    #my_locations
+    %br
+      %p.content-padded
+        Now you can meet people in these areas:
+      %ul.content-padded
+        - @my_locations.each do |my_location|
+          %li
+            = my_location.range
+            miles from
+            = my_location.name
+          %br
+  
+    %a.button-main.button-block{href:"/matches"}
+      Get Started!    

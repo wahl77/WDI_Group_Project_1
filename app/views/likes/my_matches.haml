@@ -1,18 +1,26 @@
-- page_title "My Friends"
+%header.bar-title
+  %a.button{href:"/matches"}
+    %img.tab-icon{src:"/assets/icon-home.png"}
+  %h1.title
+    Linker
+  %a.button{href:"/settings"}
+    %img.tab-icon{src:"/assets/icon-settings.png"}
 
-- if @my_matches.empty?
-  %br
-  %h1 Sorry, no contacts here for you
-  %h2
-    = link_to "Go get them", "/matches"
+.content
+  - if @my_matches.empty?
+    %br
+    %h3.content-padded Oops, looks like you don't have any matches.
+    %br
+    %a.button-main.button-block{href:"/matches"}
+      Find New Friends!
 
-%ul.list
-  - @my_matches.each do |match|
-    %a{href:"/message_from/#{match.id}"}
-      %li
-        %img{src:"#{match.picture_url}"}
-          %p
-          = match.firstName
-          = match.headline
-        %a.button-negative{href:"/match/delete/#{match.id}"}
-          X
+  %ul.list
+    - @my_matches.each do |match|
+      %a{href:"/message_from/#{match.id}"}
+        %li
+          %img{src:"#{match.picture_url}"}
+            %p
+            = match.firstName
+            = match.headline
+          %a.button-negative{href:"/match/delete/#{match.id}"}
+            X

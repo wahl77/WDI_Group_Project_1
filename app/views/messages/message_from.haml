@@ -1,12 +1,16 @@
-- page_title("Messages -#{User.find(params[:id]).firstName}")
+%header.bar-title
+  %a.button{href:"/matches"}
+    %img.tab-icon{src:"/assets/icon-home.png"}
+  %h1.title
+    Linker
 
+.content
+  = render :partial => "compose"
 
-= render :partial => "compose"
+  - if @messages.empty?
+    %h2
+      You have shared interest, start the discussion
 
-- if @messages.empty?
-  %h2
-    You have shared interest, start the discussion
-
-%ul.list
-  - @messages.each do |message|
-    = render :partial => "element", :locals => {message:message}
+  %ul.list
+    - @messages.each do |message|
+      = render :partial => "element", :locals => {message:message}
