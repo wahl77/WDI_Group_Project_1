@@ -15,7 +15,9 @@ class LikesController < ApplicationController
   
   def browse_match
     @users = current_user.get_users
-    @page = "match"
+    if @users.empty?
+      redirect_to "/my_profile"
+    end
   end
   
   def my_matches
