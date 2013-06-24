@@ -1,0 +1,20 @@
+%header.bar-title
+  %a.button{href:"/matches"}
+    %img.tab-icon{src:"/assets/icon-home.png"}
+  %h1.title
+    Linker
+
+.content
+  .content-padded
+    %p Founded by two young entrepreneurs in the Silicon Valley, and emerging as a by-product of General Assembly's WDI courses, Linker has quickly became the vibe in San Francisco. 
+
+    %p A mere 24 hours after it's launch, there were already a massive 4 people using it... and counting!!!
+
+    %p The future seems promising... Stay tuned!
+
+    %p In the meantime, we'd appreciate your feedback!
+    
+    = form_for @feedback, remote:true do |f|
+      = f.text_area :content, rows:"3"
+      %br
+      = f.submit :"Send Feedback!", class:"button-positive button-block"

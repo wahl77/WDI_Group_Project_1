@@ -14,4 +14,12 @@ class StaticPagesController < ApplicationController
   def menu
   end
   
+  def about
+    @feedback = Feedback.new
+  end
+  
+  def create
+    feedback = Feedback.new(:content => params[:feedback][:content])
+    current_user.feedbacks << feedback
+  end
 end

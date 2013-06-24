@@ -1,4 +1,4 @@
-$(function() {
+/*$(function() {
 
   var doc;
   var iphone;
@@ -125,4 +125,4 @@ $(function() {
 
   $(window).on('load resize', initialize);
   $(window).on('load', function () { new FingerBlast('.iphone-content'); });
-});
+});*/

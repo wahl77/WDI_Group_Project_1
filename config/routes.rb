@@ -23,12 +23,14 @@ WDIGroupProject1::Application.routes.draw do
 
   match "/my_profile_path" => 'users#my_profile'
   match "/matches" => 'likes#browse_match'
+  match "/about" => 'static_pages#about'
   match "/my_matches" => 'likes#my_matches'
 
   match "/message_from/:id" => 'messages#message_from'
   match "/message_compose/:id" => 'messages#message_compose'
 
   match "/edit_locations" => 'locations#edit'
+  match "/feedback" => 'static_pages#create', as:"feedbacks"
   resources :users
 
   resources :locations
